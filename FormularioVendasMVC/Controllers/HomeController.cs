@@ -17,8 +17,8 @@ namespace FormularioVendasMVC.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Message"] = "Site de Vendas no formato MVC utilizando C#";
+            ViewData["Professor"] = "Nelio Alves";
             return View();
         }
 
