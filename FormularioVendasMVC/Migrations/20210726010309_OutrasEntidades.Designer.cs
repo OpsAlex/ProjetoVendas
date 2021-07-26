@@ -3,14 +3,16 @@ using System;
 using FormularioVendasMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormularioVendasMVC.Migrations
 {
     [DbContext(typeof(FormularioVendasMVCContext))]
-    partial class FormularioVendasMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20210726010309_OutrasEntidades")]
+    partial class OutrasEntidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
