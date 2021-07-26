@@ -1,0 +1,24 @@
+using FormularioVendasMVC.Data;
+using FormularioVendasMVC.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FormularioVendasMVC.Services
+{
+    public class SellerService
+    {
+        private readonly FormularioVendasMVCContext _context;
+
+        public SellerService(FormularioVendasMVCContext context)
+        {
+            _context = context;
+        }
+
+        public List<Seller> FindAll()
+        {
+            return _context.Seller.ToList();
+        }
+    }
+}

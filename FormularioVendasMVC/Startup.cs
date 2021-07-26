@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using FormularioVendasMVC.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using FormularioVendasMVC.Data;
+using FormularioVendasMVC.Services;
 
 namespace FormularioVendasMVC
 {
@@ -42,6 +43,7 @@ namespace FormularioVendasMVC
             builder.MigrationsAssembly("FormularioVendasMVC")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
                     
         }
 
