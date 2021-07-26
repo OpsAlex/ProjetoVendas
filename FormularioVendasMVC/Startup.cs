@@ -38,7 +38,9 @@ namespace FormularioVendasMVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<FormularioVendasMVCContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("FormularioVendasMVCContext")));
+            options.UseMySql(Configuration.GetConnectionString("FormularioVendasMVCContext"), builder =>
+            builder.MigrationsAssembly("FormularioVendasMVC")));
+                    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
