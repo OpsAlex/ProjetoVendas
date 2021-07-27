@@ -7,23 +7,18 @@ using System.Threading.Tasks;
 
 namespace FormularioVendasMVC.Services
 {
-    public class SellerService
+    public class DepartmentService
     {
         private readonly FormularioVendasMVCContext _context;
 
-        public SellerService(FormularioVendasMVCContext context)
+        public DepartmentService(FormularioVendasMVCContext context)
         {
             _context = context;
         }
+        public List<Department> FindAll()
+        {
+            return _context.Department.OrderBy(x => x.Name).ToList();
+        }
 
-        public List<Seller> FindAll()
-        {
-            return _context.Seller.ToList();
-        }
-        public void Insert(Seller obj)
-        {
-            _context.Add(obj);
-            _context.SaveChanges();
-        }
     }
 }
