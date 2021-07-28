@@ -34,10 +34,18 @@ namespace FormularioVendasMVC.Services
         }
         public async Task RemoveAsync(int id)
         {
-            var obj = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(obj);
-            // esse comando irá atualizar no banco de dados a alteração feita na lista
-            await _context.SaveChangesAsync();
+            try
+            {
+
+                var obj = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(obj);
+                // esse comando irá atualizar no banco de dados a alteração feita na lista
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new IntegrityException("Não é possivel deletar este vendedor, pois o mesmo possui vendas");
+            }
         }
         public async Task UpdateAsync(Seller obj)
         {
