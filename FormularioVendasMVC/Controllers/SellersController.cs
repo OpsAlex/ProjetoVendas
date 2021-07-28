@@ -37,6 +37,13 @@ namespace FormularioVendasMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            // Segurança, script para validação dos campos digitados, caso o JS esteja desabilitado
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -81,10 +88,12 @@ namespace FormularioVendasMVC.Controllers
         }
         public IActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id not Provided" });
             }
+
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
@@ -100,7 +109,14 @@ namespace FormularioVendasMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
-            
+            // Segurança, script para validação dos campos digitados, caso o JS esteja desabilitado
+            if (!ModelState.IsValid)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
