@@ -5915,6 +5915,7 @@ button.close {
   filter: alpha(opacity=0);
   opacity: 0;
 }
+
 .tooltip.in {
   filter: alpha(opacity=90);
   opacity: 0.9;
@@ -6436,6 +6437,8 @@ button.close {
 .affix {
   position: fixed;
 }
+
+
 @-ms-viewport {
   width: device-width;
 }
